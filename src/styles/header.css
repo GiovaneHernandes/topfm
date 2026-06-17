@@ -1,8 +1,8 @@
 /* =========================================================
    HEADER — TOP FM 101.3
-   Barra fixa com efeito de "sintonia": o contorno inferior
-   dourado se intensifica ao rolar a página (puro CSS, via
-   sticky + backdrop blur, sem exigir alterações no JSX).
+   Barra fixa com efeito de "sintonia". Logo + miniatura do
+   microfone agrupadas em .header-brand (o microfone migrou
+   do Hero para o header, mantendo o título do Hero limpo).
    ========================================================= */
 
 .header {
@@ -30,7 +30,13 @@
   transition: background var(--tfm-med), box-shadow var(--tfm-med);
 }
 
-/* Logo recebe destaque real: maior, com leve respiro e glow sutil */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
 .logo {
   width: 64px;
   height: 64px;
@@ -46,6 +52,23 @@
 .logo:hover {
   transform: scale(1.04);
   filter: drop-shadow(0 0 22px rgba(255, 0, 0, 0.55));
+}
+
+/* Miniatura do microfone ao lado da logo */
+.header-mic {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--tfm-border-strong);
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.25);
+  flex-shrink: 0;
+  transition: transform var(--tfm-fast), box-shadow var(--tfm-fast);
+}
+
+.header-mic:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
 .header nav {
@@ -67,7 +90,6 @@
   transition: color var(--tfm-fast);
 }
 
-/* Sublinhado animado — estado hover elegante, sem deslocar layout */
 .header nav a::after {
   content: '';
   position: absolute;
@@ -89,7 +111,6 @@
   transform: scaleX(1);
 }
 
-/* Botão "OUÇA AO VIVO" — pulso de transmissão real, não decoração genérica */
 .ao-vivo {
   position: relative;
   display: inline-flex;
@@ -184,8 +205,13 @@
   }
 
   .logo {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .header-mic {
+    width: 36px;
+    height: 36px;
   }
 
   .header nav {
