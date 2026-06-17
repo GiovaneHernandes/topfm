@@ -10,11 +10,6 @@ export default function Hero() {
           VOCÊ!
         </h1>
       </div>
-
-      <img
-        src="/microfone.png"
-        alt="Microfone"
-      />
     </section>
   );
 }
