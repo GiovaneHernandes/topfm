@@ -1,0 +1,110 @@
+/* =========================================================
+   TOP FM 101.3 — Design Tokens
+   Identidade: preto / vermelho / dourado
+   Conceito: "Dial" — referências ao rádio analógico,
+   frequência e transmissão ao vivo.
+   ========================================================= */
+
+:root {
+  /* Cores de marca (oficiais — não alterar) */
+  --tfm-black: #000000;
+  --tfm-black-soft: #111111;
+  --tfm-red: #FF0000;
+  --tfm-gold: #FFD700;
+  --tfm-white: #FFFFFF;
+
+  /* Derivados de superfície (apenas opacidade/mistura, nunca substituem a marca) */
+  --tfm-surface-0: #000000;
+  --tfm-surface-1: #0b0b0b;
+  --tfm-surface-2: #131313;
+  --tfm-surface-3: #1a1a1a;
+  --tfm-border-soft: rgba(255, 255, 255, 0.08);
+  --tfm-border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Vermelho — variações tonais para hover/glow, sem fugir do hex base */
+  --tfm-red-glow: rgba(255, 0, 0, 0.45);
+  --tfm-red-dim: rgba(255, 0, 0, 0.12);
+  --tfm-red-hover: #ff2b2b;
+
+  /* Dourado — variações tonais */
+  --tfm-gold-glow: rgba(255, 215, 0, 0.35);
+  --tfm-gold-dim: rgba(255, 215, 0, 0.1);
+
+  /* Texto */
+  --tfm-text-primary: #FFFFFF;
+  --tfm-text-secondary: #b8b8b8;
+  --tfm-text-muted: #7a7a7a;
+
+  /* Tipografia */
+  --tfm-font-display: 'Outfit', sans-serif;
+  --tfm-font-body: 'Inter', sans-serif;
+
+  /* Raios e espaçamentos padronizados */
+  --tfm-radius-sm: 10px;
+  --tfm-radius-md: 16px;
+  --tfm-radius-lg: 24px;
+  --tfm-radius-pill: 999px;
+
+  --tfm-gap-xs: 8px;
+  --tfm-gap-sm: 16px;
+  --tfm-gap-md: 24px;
+  --tfm-gap-lg: 48px;
+  --tfm-gap-xl: 80px;
+
+  /* Sombras */
+  --tfm-shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --tfm-shadow-red: 0 0 30px var(--tfm-red-glow);
+  --tfm-shadow-gold: 0 0 30px var(--tfm-gold-glow);
+
+  /* Transições */
+  --tfm-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --tfm-fast: 0.2s var(--tfm-ease);
+  --tfm-med: 0.35s var(--tfm-ease);
+
+  /* Largura máxima de conteúdo */
+  --tfm-maxw: 1320px;
+}
+
+/* Respeita preferência de movimento reduzido em todo o site */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--tfm-black);
+  color: var(--tfm-text-primary);
+}
+
+/* Foco visível e acessível em toda a aplicação */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--tfm-gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Utilitário de contêiner usado pelos módulos novos */
+.tfm-container {
+  width: 100%;
+  max-width: var(--tfm-maxw);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 640px) {
+  .tfm-container {
+    padding: 0 20px;
+  }
+}

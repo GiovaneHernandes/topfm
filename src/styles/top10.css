@@ -1,0 +1,204 @@
+/* =========================================================
+   TOP HITS — visual de playlist de streaming premium
+   Fundo preto, ranking em destaque, cards modernos.
+   Este arquivo estiliza tanto a versão simples usada em
+   Home (components/Top10.jsx → .top-hits-cards/.top-hit-card)
+   quanto a versão com imagens (pages/Top10.jsx → .hits-grid/.hit-card),
+   sem necessidade de alterar nenhum JSX.
+   ========================================================= */
+
+.top-hits {
+  width: 100%;
+  background: var(--tfm-black);
+  padding: clamp(48px, 7vw, 80px) clamp(20px, 5vw, 64px);
+}
+
+.top-hits .container {
+  max-width: var(--tfm-maxw);
+  margin: 0 auto;
+}
+
+.top-hits h2 {
+  color: var(--tfm-text-primary);
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 32px;
+  text-align: left;
+  position: relative;
+  display: inline-block;
+}
+
+.top-hits h2::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin-top: 12px;
+  border-radius: var(--tfm-radius-pill);
+  background: linear-gradient(90deg, var(--tfm-gold), var(--tfm-red));
+}
+
+/* ---------- Carrossel horizontal (usado em Home) ---------- */
+
+.top-hits-cards {
+  display: flex;
+  gap: var(--tfm-gap-md);
+  overflow-x: auto;
+  padding-bottom: 18px;
+  scroll-snap-type: x mandatory;
+}
+
+.top-hits-cards::-webkit-scrollbar {
+  height: 8px;
+}
+
+.top-hits-cards::-webkit-scrollbar-track {
+  background: var(--tfm-surface-2);
+  border-radius: var(--tfm-radius-pill);
+}
+
+.top-hits-cards::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--tfm-red), var(--tfm-gold));
+  border-radius: var(--tfm-radius-pill);
+}
+
+.top-hit-card {
+  position: relative;
+  min-width: 240px;
+  min-height: 180px;
+  background: linear-gradient(150deg, var(--tfm-surface-2), var(--tfm-surface-0));
+  border: 1px solid var(--tfm-border-strong);
+  border-radius: var(--tfm-radius-lg);
+  padding: 26px;
+  color: var(--tfm-white);
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  overflow: hidden;
+  transition: transform var(--tfm-med), border-color var(--tfm-med), box-shadow var(--tfm-med);
+}
+
+.top-hit-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--tfm-red);
+  box-shadow: 0 16px 40px rgba(255, 0, 0, 0.25);
+}
+
+.top-hit-card span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 12px;
+  color: var(--tfm-black);
+  background: var(--tfm-gold);
+  font-size: 17px;
+  font-weight: 800;
+  font-family: var(--tfm-font-display);
+  border-radius: var(--tfm-radius-pill);
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.35);
+}
+
+.top-hit-card h3 {
+  margin-top: 22px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--tfm-text-primary);
+}
+
+.top-hit-card p {
+  color: var(--tfm-text-secondary);
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* ---------- Grid com imagens (pages/Top10.jsx) ---------- */
+
+.hits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--tfm-gap-md);
+}
+
+.hit-card {
+  position: relative;
+  background: linear-gradient(150deg, var(--tfm-surface-2), var(--tfm-surface-0));
+  border: 1px solid var(--tfm-border-strong);
+  border-radius: var(--tfm-radius-lg);
+  overflow: hidden;
+  color: var(--tfm-white);
+  transition: transform var(--tfm-med), border-color var(--tfm-med), box-shadow var(--tfm-med);
+}
+
+.hit-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--tfm-red);
+  box-shadow: 0 16px 40px rgba(255, 0, 0, 0.25);
+}
+
+.hit-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 1 / 1;
+}
+
+.hit-card .ranking {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 10px;
+  color: var(--tfm-black);
+  background: var(--tfm-gold);
+  font-size: 15px;
+  font-weight: 800;
+  font-family: var(--tfm-font-display);
+  border-radius: var(--tfm-radius-pill);
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.4);
+  z-index: 2;
+}
+
+.hit-card .info {
+  padding: 18px 20px 22px;
+}
+
+.hit-card .info h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--tfm-text-primary);
+}
+
+.hit-card .info p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--tfm-text-secondary);
+}
+
+/* ===================== RESPONSIVO ===================== */
+
+@media (max-width: 768px) {
+  .top-hits {
+    padding: 48px 20px;
+  }
+
+  .top-hit-card {
+    min-width: 210px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hit-card img {
+    height: 150px;
+  }
+}

@@ -1,0 +1,116 @@
+/* =========================================================
+   PLAYER AO VIVO
+   Estética inspirada em players de streaming, mas com
+   identidade de transmissão de rádio: indicador "ON AIR",
+   tipografia de "tocando agora" em destaque.
+   A classe usada pelo componente é `.card` (Player.jsx).
+   ========================================================= */
+
+.card {
+  position: relative;
+  background: linear-gradient(165deg, var(--tfm-surface-2) 0%, var(--tfm-surface-0) 100%);
+  border: 1px solid var(--tfm-border-strong);
+  border-radius: var(--tfm-radius-lg);
+  padding: clamp(24px, 4vw, 36px);
+  color: var(--tfm-text-primary);
+
+  box-shadow: var(--tfm-shadow-card), 0 0 0 1px rgba(255, 0, 0, 0.08) inset;
+  overflow: hidden;
+}
+
+/* Friso superior em gradiente vermelho/dourado — assinatura do player */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--tfm-red), var(--tfm-gold));
+}
+
+.card h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--tfm-text-primary);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+}
+
+/* Indicador "ON AIR" antes do título */
+.card h2::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--tfm-red);
+  box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.6);
+  animation: tfm-onair-pulse 1.8s var(--tfm-ease) infinite;
+  flex-shrink: 0;
+}
+
+@keyframes tfm-onair-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(255, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+
+.card audio {
+  width: 100%;
+  margin-top: 4px;
+  border-radius: var(--tfm-radius-pill);
+  accent-color: var(--tfm-red);
+}
+
+.card h3 {
+  margin-top: 26px;
+  margin-bottom: 4px;
+  color: var(--tfm-gold);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card p {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--tfm-text-primary);
+  font-family: var(--tfm-font-display);
+}
+
+.card button {
+  width: 100%;
+  margin-top: 24px;
+  background: linear-gradient(135deg, var(--tfm-red), #c90000);
+  color: var(--tfm-white);
+  border: none;
+  padding: 14px;
+  border-radius: var(--tfm-radius-sm);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: transform var(--tfm-fast), box-shadow var(--tfm-fast);
+}
+
+.card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 0, 0, 0.4);
+}
+
+.card button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .card p {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,115 @@
+/* =========================================================
+   PROGRAMAÇÃO — carrossel premium
+   Cards grandes, imagens padronizadas, hover elegante.
+   ========================================================= */
+
+.programacao-section {
+  padding: clamp(40px, 6vw, 64px) clamp(20px, 5vw, 64px);
+  background: var(--tfm-black);
+}
+
+.titulo_programacao {
+  color: var(--tfm-text-primary);
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 28px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Sublinhado curto em gradiente — marca visual consistente com o header */
+.titulo_programacao::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin-top: 10px;
+  border-radius: var(--tfm-radius-pill);
+  background: linear-gradient(90deg, var(--tfm-red), var(--tfm-gold));
+}
+
+.programacao-carrossel {
+  display: flex;
+  gap: var(--tfm-gap-md);
+  overflow-x: auto;
+  padding-bottom: 18px;
+  scroll-snap-type: x mandatory;
+}
+
+.programacao-carrossel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.programacao-carrossel::-webkit-scrollbar-track {
+  background: var(--tfm-surface-2);
+  border-radius: var(--tfm-radius-pill);
+}
+
+.programacao-carrossel::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--tfm-red), var(--tfm-gold));
+  border-radius: var(--tfm-radius-pill);
+}
+
+.programa-card {
+  min-width: 300px;
+  max-width: 300px;
+  border-radius: var(--tfm-radius-md);
+  overflow: hidden;
+  background: var(--tfm-surface-2);
+  border: 1px solid var(--tfm-border-soft);
+  flex-shrink: 0;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: transform var(--tfm-med), border-color var(--tfm-med), box-shadow var(--tfm-med);
+}
+
+.programa-card:hover {
+  border-color: var(--tfm-gold);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 215, 0, 0.15);
+}
+
+/* Imagem com tamanho padronizado em todos os cards */
+.programa-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--tfm-med);
+}
+
+.programa-card:hover img {
+  transform: scale(1.05);
+}
+
+.programa-card .info {
+  padding: 18px 20px 22px;
+}
+
+.programa-card .info span {
+  color: var(--tfm-gold);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+.programa-card .info h3 {
+  color: var(--tfm-text-primary);
+  margin-top: 8px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* ===================== RESPONSIVO ===================== */
+
+@media (max-width: 640px) {
+  .programa-card {
+    min-width: 240px;
+    max-width: 240px;
+  }
+
+  .programa-card img {
+    height: 160px;
+  }
+}

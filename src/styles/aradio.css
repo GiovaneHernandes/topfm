@@ -1,0 +1,22 @@
+/* =========================================================
+   PÁGINA "A RÁDIO" — placeholder institucional
+   Correção: o padding original (500px) quebrava o layout
+   em qualquer resolução. Ajustado para um espaçamento
+   consistente com o restante do site.
+   ========================================================= */
+
+.main {
+  min-height: 60vh;
+  padding: clamp(64px, 10vw, 140px) clamp(20px, 6vw, 64px);
+  background: var(--tfm-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main h1 {
+  color: var(--tfm-text-primary);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  text-align: center;
+}

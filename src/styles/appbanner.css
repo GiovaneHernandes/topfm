@@ -1,0 +1,30 @@
+.banner-app {
+  margin: 40px auto;
+  width: 90%;
+  border: 2px solid #ff0000;
+  border-radius: 20px;
+  padding: 40px;
+  background: #090909;
+  text-align: center;
+}
+
+.banner-app h1 {
+  color: #ffd700;
+  font-size: 50px;
+}
+
+.banner-app h2 {
+  margin-top: 10px;
+  color: white;
+}
+
+.stores {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.stores img {
+  width: 220px;
+}

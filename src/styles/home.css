@@ -1,0 +1,23 @@
+/* =========================================================
+   HOME — grid que recebe o Player ao vivo
+   O estilo visual do cartão do player vive em player.css
+   (classe `.card`, usada pelo componente Player.jsx);
+   aqui cuidamos apenas do posicionamento na página.
+   ========================================================= */
+
+.cards-home {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--tfm-gap-md);
+  padding: clamp(32px, 6vw, 64px) clamp(20px, 5vw, 64px);
+  background: var(--tfm-black);
+  max-width: var(--tfm-maxw);
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .cards-home {
+    grid-template-columns: 1fr;
+    padding: 28px 18px;
+  }
+}

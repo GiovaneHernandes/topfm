@@ -1,0 +1,207 @@
+/* =========================================================
+   HEADER — TOP FM 101.3
+   Barra fixa com efeito de "sintonia": o contorno inferior
+   dourado se intensifica ao rolar a página (puro CSS, via
+   sticky + backdrop blur, sem exigir alterações no JSX).
+   ========================================================= */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  width: 100%;
+  min-height: 88px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--tfm-gap-md);
+
+  padding: 14px clamp(20px, 5vw, 64px);
+
+  background: rgba(0, 0, 0, 0.78);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid var(--tfm-border-soft);
+  box-shadow: 0 1px 0 rgba(255, 0, 0, 0.25), 0 12px 30px rgba(0, 0, 0, 0.35);
+
+  transition: background var(--tfm-med), box-shadow var(--tfm-med);
+}
+
+/* Logo recebe destaque real: maior, com leve respiro e glow sutil */
+.logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin: 0;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  filter: drop-shadow(0 0 14px rgba(255, 0, 0, 0.35));
+  transition: filter var(--tfm-fast), transform var(--tfm-fast);
+}
+
+.logo:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 22px rgba(255, 0, 0, 0.55));
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3vw, 36px);
+  flex-wrap: wrap;
+}
+
+.header nav a {
+  position: relative;
+  text-decoration: none;
+  color: var(--tfm-text-secondary);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 8px 2px;
+  transition: color var(--tfm-fast);
+}
+
+/* Sublinhado animado — estado hover elegante, sem deslocar layout */
+.header nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--tfm-red), var(--tfm-gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--tfm-med);
+}
+
+.header nav a:hover {
+  color: var(--tfm-white);
+}
+
+.header nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Botão "OUÇA AO VIVO" — pulso de transmissão real, não decoração genérica */
+.ao-vivo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background: linear-gradient(135deg, var(--tfm-red) 0%, #c90000 100%);
+  color: var(--tfm-white);
+  border: none;
+  padding: 13px 26px;
+  border-radius: var(--tfm-radius-pill);
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(255, 0, 0, 0.4);
+  transition: transform var(--tfm-fast), box-shadow var(--tfm-fast);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ao-vivo::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tfm-white);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  animation: tfm-live-pulse 1.8s var(--tfm-ease) infinite;
+}
+
+@keyframes tfm-live-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.ao-vivo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(255, 0, 0, 0.55);
+}
+
+.redes {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 20px;
+  color: var(--tfm-gold);
+  flex-shrink: 0;
+}
+
+.redes svg {
+  cursor: pointer;
+  transition: color var(--tfm-fast), transform var(--tfm-fast);
+}
+
+.redes svg:hover {
+  color: var(--tfm-white);
+  transform: translateY(-2px);
+}
+
+/* ===================== RESPONSIVO ===================== */
+
+@media (max-width: 1024px) {
+  .header {
+    flex-wrap: wrap;
+    row-gap: 14px;
+    padding: 14px 24px;
+  }
+
+  .header nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    justify-content: space-between;
+    padding: 12px 18px;
+  }
+
+  .logo {
+    width: 52px;
+    height: 52px;
+  }
+
+  .header nav {
+    gap: 14px;
+  }
+
+  .header nav a {
+    font-size: 13px;
+  }
+
+  .ao-vivo {
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+
+  .redes {
+    display: none;
+  }
+}
