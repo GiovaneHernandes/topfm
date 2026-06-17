@@ -1,6 +1,5 @@
 import Header from "../components/Header";
 import Hero from "../components/Hero";
-import Player from "../components/Player";
 import Programacaocard from "../components/Programacaocard";
 import Top10 from "../components/Top10";
 import Footer from "../components/Footer";
