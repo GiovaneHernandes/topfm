@@ -4,11 +4,19 @@ import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
 export default function Header() {
   return (
     <header className="header">
-      <img
-        src="/logo.png"
-        alt="Top FM"
-        className="logo"
-      />
+      <div className="header-brand">
+        <img
+          src="/logo.png"
+          alt="Top FM"
+          className="logo"
+        />
+
+        <img
+          src="/microfone.png"
+          alt="Microfone Top FM"
+          className="header-mic"
+        />
+      </div>
 
       <nav>
         <a href="/">Início</a>
