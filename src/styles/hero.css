@@ -1,20 +1,19 @@
 /* =========================================================
    HERO — "A TOP QUE TOCA VOCÊ"
    Profundidade construída com gradientes escuros em camadas.
-   Imagem principal reduzida (não ocupa mais a viewport
-   inteira) para abrir espaço à seção de Notícias abaixo,
-   mantendo o microfone como elemento central, contido.
+   A imagem do microfone foi movida para o Header; aqui fica
+   apenas o título, com respiro inferior para compensar.
    ========================================================= */
 
 .hero {
   position: relative;
   width: 100%;
-  min-height: 62vh;
+  min-height: 46vh;
   overflow: hidden;
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 
   background:
@@ -37,7 +36,7 @@
   z-index: 2;
   text-align: center;
   width: 100%;
-  padding: clamp(40px, 7vw, 72px) 24px clamp(8px, 2vw, 16px);
+  padding: clamp(56px, 9vw, 96px) 24px;
 }
 
 .texto h1 {
@@ -56,32 +55,11 @@
   text-shadow: 0 0 24px rgba(255, 215, 0, 0.45);
 }
 
-/* Imagem principal reduzida: contida, com cantos arredondados
-   e largura máxima, em vez de ocupar 100vw em escala real. */
-.hero img {
-  position: relative;
-  z-index: 1;
-  width: min(680px, 88vw);
-  max-width: 680px;
-  height: auto;
-  margin-top: clamp(28px, 5vw, 48px);
-  margin-bottom: clamp(32px, 5vw, 56px);
-  border-radius: var(--tfm-radius-lg);
-  object-fit: cover;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-
 /* ===================== RESPONSIVO ===================== */
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 52vh;
-  }
-
-  .hero img {
-    width: 92vw;
-    margin-top: 24px;
-    margin-bottom: 32px;
+    min-height: 38vh;
   }
 }
 
