@@ -1,0 +1,47 @@
+/* =========================================================
+   PÁGINA "OUÇA AO VIVO" — destino do botão do header
+   Título compacto acima do player (sem hero grande), para
+   que o player continue visível sem precisar rolar a página.
+   ========================================================= */
+
+.ouca-hero {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 0, 0, 0.16), transparent 55%),
+    linear-gradient(180deg, #000000, #111111);
+  padding: clamp(20px, 3vw, 28px) clamp(20px, 5vw, 64px);
+  text-align: center;
+  border-bottom: 1px solid var(--tfm-border-soft);
+}
+
+.ouca-hero h1 {
+  color: var(--tfm-gold);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.ouca-container {
+  background: var(--tfm-black);
+  padding: clamp(20px, 4vw, 40px);
+  min-height: calc(100vh - 88px - 56px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ouca-container .player-card {
+  width: 100%;
+  max-width: 1100px;
+}
+
+@media (max-width: 768px) {
+  .ouca-hero {
+    padding: 16px 16px 0;
+  }
+
+  .ouca-container {
+    min-height: auto;
+    padding: 16px;
+  }
+}

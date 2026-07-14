@@ -1,70 +1,74 @@
 /* =========================================================
    HERO — "A TOP QUE TOCA VOCÊ"
-   Profundidade construída com gradientes escuros em camadas.
-   A imagem do microfone foi movida para o Header; aqui fica
-   apenas o título, com respiro inferior para compensar.
+   A imagem do microfone (definida inline via style no
+   Hero.jsx) cobre o Hero inteiro como banner de fundo,
+   com overlay escuro para manter o título legível por cima.
    ========================================================= */
 
 .hero {
   position: relative;
   width: 100%;
-  min-height: 46vh;
-  overflow: hidden;
+  min-height: 40vh;
+  overflow: hidden; 
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255, 0, 0, 0.18), transparent 55%),
-    radial-gradient(circle at 85% 30%, rgba(255, 215, 0, 0.08), transparent 45%),
-    linear-gradient(180deg, #000000 0%, #0a0a0a 55%, #000000 100%);
+  background-color: #000000;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.hero::after {
+/* Overlay escuro sobre a imagem — garante leitura do título
+   branco/dourado em qualquer trecho da foto. */
+.hero::before {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.75) 100%);
-  z-index: 1;
-}
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.72) 55%, rgba(0, 0, 0, 0.88) 100%),
+    radial-gradient(circle at 50% 35%, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.65) 75%);
+} 
 
 .texto {
   position: relative;
-  z-index: 2;
+  z-index: 1; 
   text-align: center;
   width: 100%;
-  padding: clamp(56px, 9vw, 96px) 24px;
+  padding: 24px;
 }
 
 .texto h1 {
   color: var(--tfm-text-primary);
   margin: 0;
-  font-size: clamp(2.2rem, 5.6vw, 4rem);
+  font-size: clamp(2.6rem, 7vw, 5.4rem);
   font-weight: 900;
   line-height: 1.02;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  text-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 8px 40px rgba(0, 0, 0, 0.85);
 }
 
 .texto span {
   color: var(--tfm-gold);
-  text-shadow: 0 0 24px rgba(255, 215, 0, 0.45);
+  text-shadow: 0 0 28px rgba(255, 215, 0, 0.55), 0 8px 30px rgba(0, 0, 0, 0.85);
 }
 
 /* ===================== RESPONSIVO ===================== */
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 38vh;
+    min-height: 54vh;
   }
 }
 
 @media (max-width: 480px) {
   .texto h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 }

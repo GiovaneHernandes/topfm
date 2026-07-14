@@ -1,4 +1,5 @@
 import "../styles/header.css";
+import { Link } from "react-router-dom";
 import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
 
 export default function Header() {
@@ -10,12 +11,6 @@ export default function Header() {
           alt="Top FM"
           className="logo"
         />
-
-        <img
-          src="/microfone.png"
-          alt="Microfone Top FM"
-          className="header-mic"
-        />
       </div>
 
       <nav>
@@ -25,9 +20,9 @@ export default function Header() {
         <a href="/contato">Contato</a>
       </nav>
 
-      <button className="ao-vivo">
+      <Link to="/ouca-ao-vivo" className="ao-vivo">
         🔴 OUÇA AO VIVO
-      </button>
+      </Link>
 
       <div className="redes">
         <FaInstagram />
